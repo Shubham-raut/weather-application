@@ -1,65 +1,58 @@
-import React, { useState } from 'react';
-import styles from './City.module.css';
+import React from "react";
+import { useStateValue } from "../../context/StateProvider";
+import { withRouter } from "react-router-dom";
 
 function City(props) {
-    const [tempType, setTempType] = useState('°C');
-    const [tempTypes] = useState(['°C', 'K', '°F']);
-    let classNames = [styles.Button];
+  const [{ cityData, date, time }] = useStateValue();
 
-    let tempCategories = tempTypes.map(type => {
-        if (tempType === type) {
-            classNames.push(styles.Active);
-        } else {
-            classNames = [styles.Button]
-        }
-        return <button key={type} className={classNames.join(' ')} onClick={() => setTempType(type)}>{type}</button>
-    })
+  let temperature = cityData.main.temp - 273.15;
+  let min_temp = cityData.main.temp_min - 273.15;
+  let max_temp = cityData.main.temp_max - 273.15;
 
-    let temperature = null;
-    let min_temp = null;
-    let max_temp = null;
+  let cityStyles = ["City"];
+  if (new Date().getHours() > 19 || new Date().getHours() < 7) {
+    cityStyles.push("Dark");
+  } else {
+    cityStyles.push("Sunny");
+  }
 
-    if (tempType === '°C') {
-        temperature = props.data.main.temp - 273.15;
-        min_temp = props.data.main.temp_min - 273.15;
-        max_temp = props.data.main.temp_max - 273.15;
-    } else if (tempType === 'K') {
-        temperature = props.data.main.temp;
-        min_temp = props.data.main.temp_min;
-        max_temp = props.data.main.temp_max;
-    }
-    else if (tempType === '°F') {
-        temperature = ((props.data.main.temp - 273.15) * 1.8) + 32;
-        min_temp = ((props.data.main.temp_min - 273.15) * 1.8) + 32;
-        max_temp = ((props.data.main.temp_max - 273.15) * 1.8) + 32;
-    }
-
-    let week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    let date = week[new Date().getDay()] + ', ' + new Date().getHours() + ":" + new Date().getMinutes();
-    let cityStyles = [styles.City];
-    if (new Date().getHours() > 19 || new Date().getHours() < 7) { cityStyles.push(styles.Dark); }
-    else { cityStyles.push(styles.Sunny); }
-
-    return (
-        <div className={styles.CityContainer}>
-            <div className={cityStyles.join(' ')}>
-                <div>
-                    <p className={styles.CityName}>{props.data.name}</p>
-                    <span>{date}</span>
-                </div>
-                <div className={styles.TempContainer}>
-                    <p className={styles.Temperature}>{parseInt(temperature)} {tempType}</p>
-                    <div className={styles.WeatherDescription}>
-                        <span className={styles.Description}>{props.data.weather[0].main}</span>
-                        <span>{parseInt(max_temp)} {tempType}/{parseInt(min_temp)} {tempType}</span>
-                    </div>
-                </div>
-                <div className={styles.TempCategories}>
-                    Tempreature Type: {tempCategories}
-                </div>
+  return (
+    <>
+      <div className="CityContainer">
+        <div className={cityStyles.join(" ")}>
+          <div>
+            <p className="CityName">
+              {cityData.name}, {cityData.sys.country}
+            </p>
+            <p className="Date_Time">
+              <span>{date}</span>
+              <span>{time}</span>
+            </p>
+          </div>
+          <div className="TempContainer">
+            <p className="Temperature">{parseInt(temperature)} °C</p>
+            <div className="WeatherDescription">
+              <span className="Description">{cityData.weather[0].main}</span>
+              <span>
+                {parseInt(max_temp)} °C / {parseInt(min_temp)} °C
+              </span>
             </div>
+          </div>
         </div>
-    )
+      </div>
+
+      <p
+        className="MoreDetails"
+        onClick={() =>
+          props.history.push({
+            pathname: "/city/" + cityData.name,
+          })
+        }
+      >
+        View More Details
+      </p>
+    </>
+  );
 }
 
-export default City;
+export default withRouter(City);

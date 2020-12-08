@@ -1,0 +1,95 @@
+.City,
+.CityDetail {
+    border-radius: 1rem;
+    width: 300px;
+    padding: 0.8rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 3px 6px 1px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 2px rgba(50, 50, 70, 0.5);
+    font-weight: 500;
+}
+
+.CityName {
+    font-size: 2rem;
+    font-weight: 800;
+    text-shadow: 2px 3px rgba(50, 50, 70, 0.5);
+}
+
+.WeatherDescription {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CityContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.Temperature {
+    font-size: 5rem;
+    font-weight: 900;
+    text-shadow: 2px 4px rgba(50, 50, 70, 0.5);
+}
+
+.Button {
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    margin-right: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.TempContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.TempCategories {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10px;
+}
+
+// .Active {
+//     background-color: #38a3ff;
+//     color: #fff;
+// }
+
+// .Dark {
+//     background: linear-gradient(to top, #283e51, #0a2342);
+//     color: #fff !important;
+// }
+
+// .Sunny {
+//     background: linear-gradient(to right, #2bc0e4, #eaecc6);
+//     color: #000;
+// }
+
+// .Stormy {
+//     background: linear-gradient(45deg, black, transparent);
+//     color: "#fff";
+// }
+
+.Date_Time {
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+}
+
+.Description {
+    font-size: 2rem;
+    font-weight: 800;
+    text-shadow: 2px 3px rgba(50, 50, 70, 0.5);
+}
+
+.MoreDetails {
+    text-align: center;
+    cursor: pointer;
+    margin: 5px auto;
+}

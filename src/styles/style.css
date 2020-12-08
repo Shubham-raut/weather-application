@@ -5,6 +5,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   min-height: 100vh;
   width: 100%;
+  line-height: 1.35;
 }
 
 body * {
@@ -12,6 +13,10 @@ body * {
           box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+hr {
+  margin: 10px 0;
 }
 
 header {
@@ -101,6 +106,156 @@ form .form-control:focus {
 
 .title-tag {
   text-shadow: 2px 3px #757575;
+}
+
+.City,
+.CityDetail {
+  border-radius: 1rem;
+  width: 300px;
+  padding: 0.8rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: 3px 6px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 3px 6px 1px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 2px rgba(50, 50, 70, 0.5);
+  font-weight: 500;
+}
+
+.CityName {
+  font-size: 2rem;
+  font-weight: 800;
+  text-shadow: 2px 3px rgba(50, 50, 70, 0.5);
+}
+
+.WeatherDescription {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.CityContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 5%;
+}
+
+.Temperature {
+  font-size: 5rem;
+  font-weight: 900;
+  text-shadow: 2px 4px rgba(50, 50, 70, 0.5);
+}
+
+.Button {
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+  margin-right: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.TempContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.TempCategories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+}
+
+.Date_Time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-style: italic;
+}
+
+.Description {
+  font-size: 2rem;
+  font-weight: 800;
+  text-shadow: 2px 3px rgba(50, 50, 70, 0.5);
+}
+
+.MoreDetails {
+  text-align: center;
+  cursor: pointer;
+  margin: 5px auto;
+}
+
+.CityDetailContainer {
+  width: 50%;
+  margin: 10px auto 0 auto;
+}
+
+.CityDetail {
+  border-radius: 2rem;
+  width: 100%;
+}
+
+.Date {
+  margin-right: 20px;
+}
+
+.MoreDesc {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  padding: 0 10%;
+}
+
+.DescDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.Labels {
+  color: #ddd;
 }
 
 .container {

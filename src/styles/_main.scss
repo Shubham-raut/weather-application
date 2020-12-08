@@ -1,0 +1,22 @@
+.title {
+    font-weight: 600;
+    text-shadow: 4px 5px darken($secondary-color, 50%);
+    padding: $m-4 $m-3;
+}
+
+form {
+    margin-bottom: $m-6;
+    .form-control {
+        background-color: darken($secondary-color, 20%);
+        border: none;
+        height: $m-5;
+
+        &:focus {
+            background-color: darken($secondary-color, 10%);
+        }
+    }
+}
+
+.title-tag {
+    text-shadow: 2px 3px darken($secondary-color, 50%);
+}
