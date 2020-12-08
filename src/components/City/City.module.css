@@ -3,16 +3,20 @@
     border-radius: 5px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     width: 300px;
+    padding: 10px;
 }
 
 .CityName {
-    font-size: 16px;
-    color: #292828;
+    font-size: 24px;
+    /* color: #292828; */
+    margin: 0;
 }
 
 .WeatherDescription {
     display: flex;
     justify-content: space-evenly;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .CityContainer {
@@ -21,16 +25,23 @@
     margin-top: 5%;
 }
 
-.Tempreature {
+.Temperature {
     font-size: 40px;
 }
 
-button {
+.Button {
     height: 40px;
     width: 40px;
     border-radius: 5px;
     margin-right: 5px;
     outline: none;
+    cursor: pointer;
+}
+
+.TempContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .TempCategories {
@@ -43,4 +54,19 @@ button {
 .Active {
     background-color: #38a3ff;
     color: #fff;
+}
+
+.Dark {
+    background: linear-gradient(to top, #283e51, #0a2342);
+    color: #fff !important;
+}
+
+.Sunny {
+    background: linear-gradient(to right, #2bc0e4, #eaecc6);
+    color: #000;
+}
+
+.Stormy {
+    background: linear-gradient(45deg, black, transparent);
+    color: "#fff";
 }

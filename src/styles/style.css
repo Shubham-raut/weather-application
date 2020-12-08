@@ -1,0 +1,131 @@
+body {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.8)));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8));
+  color: #f4f4f4;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  width: 100%;
+}
+
+body * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  border-bottom: 1px solid #bbb;
+}
+
+header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+header nav a {
+  display: inline-block;
+  padding: 0.5rem;
+}
+
+header nav .Nav-Title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+header nav .NavItemContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav .NavItemContainer a:hover {
+  color: #424242;
+}
+
+header nav .NavItemContainer a:hover::before {
+  position: relative;
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #333;
+}
+
+header nav .NavItemContainer .Active {
+  color: #424242;
+}
+
+header nav .NavItemContainer .Active::before {
+  position: relative;
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #333;
+}
+
+.title {
+  font-weight: 600;
+  text-shadow: 4px 5px #757575;
+  padding: 2rem 1.5rem;
+}
+
+form {
+  margin-bottom: 3rem;
+}
+
+form .form-control {
+  background-color: #c1c1c1;
+  border: none;
+  height: 2.5rem;
+}
+
+form .form-control:focus {
+  background-color: #dbdbdb;
+}
+
+.title-tag {
+  text-shadow: 2px 3px #757575;
+}
+
+.container {
+  max-width: 1100px;
+  padding: 0 30px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #f4f4f4;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #f4f4f4;
+}

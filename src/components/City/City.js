@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
-import './City.css';
+import styles from './City.module.css';
 
 function City(props) {
     const [tempType, setTempType] = useState('°C');
     const [tempTypes] = useState(['°C', 'K', '°F']);
+    let classNames = [styles.Button];
 
     let tempCategories = tempTypes.map(type => {
-        return <button key={type} className={tempType === type ? 'Active Button' : 'Button'} onClick={() => setTempType(type)}>{type}</button>
+        if (tempType === type) {
+            classNames.push(styles.Active);
+        } else {
+            classNames = [styles.Button]
+        }
+        return <button key={type} className={classNames.join(' ')} onClick={() => setTempType(type)}>{type}</button>
     })
 
     let temperature = null;
@@ -28,16 +34,27 @@ function City(props) {
         max_temp = ((props.data.main.temp_max - 273.15) * 1.8) + 32;
     }
 
+    let week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    let date = week[new Date().getDay()] + ', ' + new Date().getHours() + ":" + new Date().getMinutes();
+    let cityStyles = [styles.City];
+    if (new Date().getHours() > 19 || new Date().getHours() < 7) { cityStyles.push(styles.Dark); }
+    else { cityStyles.push(styles.Sunny); }
+
     return (
-        <div className='CityContainer'>
-            <div className='City'>
-                <p className='CityName'>{props.data.name}</p>
-                <p className='Tempreature'>{parseInt(temperature)} {tempType}</p>
-                <div className='WeatherDescription'>
-                    <span className='Description'>{props.data.weather[0].main}</span>
-                    <span>{parseInt(max_temp)} {tempType}/{parseInt(min_temp)} {tempType}</span>
+        <div className={styles.CityContainer}>
+            <div className={cityStyles.join(' ')}>
+                <div>
+                    <p className={styles.CityName}>{props.data.name}</p>
+                    <span>{date}</span>
                 </div>
-                <div className='TempCategories'>
+                <div className={styles.TempContainer}>
+                    <p className={styles.Temperature}>{parseInt(temperature)} {tempType}</p>
+                    <div className={styles.WeatherDescription}>
+                        <span className={styles.Description}>{props.data.weather[0].main}</span>
+                        <span>{parseInt(max_temp)} {tempType}/{parseInt(min_temp)} {tempType}</span>
+                    </div>
+                </div>
+                <div className={styles.TempCategories}>
                     Tempreature Type: {tempCategories}
                 </div>
             </div>

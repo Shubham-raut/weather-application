@@ -1,0 +1,25 @@
+.container {
+    max-width: 1100px;
+    padding: 0 30px;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+h1 {
+    font-size: $m-6;
+    text-align: center;
+}
+
+h2 {
+    font-size: $m-4;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: $secondary-color;
+    &:hover {
+        text-decoration: none;
+        color: $secondary-color;
+    }
+}
