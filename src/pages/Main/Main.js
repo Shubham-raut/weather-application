@@ -68,7 +68,9 @@ function Main() {
           value={cityInput}
           onChange={(e) => setCityInput(e.target.value)}
         />
-        <Button variant="secondary">Search</Button>
+        <Button type="submit" variant="secondary">
+          Search
+        </Button>
       </Form>
 
       {showError ? (
