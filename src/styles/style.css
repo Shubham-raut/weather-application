@@ -89,16 +89,27 @@ header nav .NavItemContainer .Active::before {
 form {
   margin-bottom: 3rem;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 form .form-control {
   background-color: #c1c1c1;
   border: none;
   height: 2.5rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 form .form-control:focus {
   background-color: #dbdbdb;
+}
+
+form .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  width: 100px;
 }
 
 .title-tag {
@@ -109,7 +120,14 @@ form .form-control:focus {
   width: 90%;
   max-width: 500px;
   text-align: center;
+}
+
+.spinner,
+.error_msg {
   position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
 }
 
 .City,
@@ -289,20 +307,6 @@ form .form-control:focus {
   padding: 0 30px;
   margin: 0 auto;
   overflow: auto;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 h1 {

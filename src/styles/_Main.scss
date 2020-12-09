@@ -7,14 +7,22 @@
 form {
     margin-bottom: 3rem;
     width: 100%;
+    display: flex;
     .form-control {
         background-color: darken($secondary-color, 20%);
         border: none;
         height: 2.5rem;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
 
         &:focus {
             background-color: darken($secondary-color, 10%);
         }
+    }
+    .btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        width: 100px;
     }
 }
 
@@ -26,5 +34,12 @@ form {
     width: 90%;
     max-width: 500px;
     text-align: center;
+}
+
+.spinner,
+.error_msg {
     position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
 }
