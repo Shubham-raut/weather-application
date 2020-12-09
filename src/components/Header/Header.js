@@ -5,12 +5,12 @@ const Header = () => {
   return (
     <header>
       <nav>
-        <NavLink exact to="/">
-          <p className="Nav-Title">My Weather Application</p>
+        <NavLink className="Nav-Title" exact to="/">
+          My Weather Application
         </NavLink>
         <div className="NavItemContainer">
           <NavLink exact to="/" activeClassName="Active">
-            Home{" "}
+            Home
           </NavLink>
         </div>
       </nav>

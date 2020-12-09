@@ -1,15 +1,16 @@
 .title {
     font-weight: 600;
     text-shadow: 4px 5px darken($secondary-color, 50%);
-    padding: $m-4 $m-3;
+    padding: 2rem 1.5rem;
 }
 
 form {
-    margin-bottom: $m-6;
+    margin-bottom: 3rem;
+    width: 100%;
     .form-control {
         background-color: darken($secondary-color, 20%);
         border: none;
-        height: $m-5;
+        height: 2.5rem;
 
         &:focus {
             background-color: darken($secondary-color, 10%);
@@ -19,4 +20,11 @@ form {
 
 .title-tag {
     text-shadow: 2px 3px darken($secondary-color, 50%);
+}
+
+.error_msg {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: absolute;
 }

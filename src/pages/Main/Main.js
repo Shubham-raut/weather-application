@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import City from "../../components/City/City";
-import { Form } from "react-bootstrap";
-import { useStateValue } from "../../context/StateProvider.js";
+import { Form, Alert } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { errorShow, fetchData } from "../../redux/actions";
 
 function Main() {
-  const [{ city, cityData }, dispatch] = useStateValue();
+  const cityData = useSelector((state) => state.cityData);
+  const error = useSelector((state) => state.error);
+  const showError = useSelector((state) => state.showError);
+  const dispatch = useDispatch();
+
   const [cityInput, setCityInput] = useState("");
   const [week] = useState([
     "Sunday",
@@ -33,53 +37,25 @@ function Main() {
   ]);
 
   const citySearchHandlor = (event) => {
-    console.log(city);
     console.log(cityData);
     event.preventDefault();
     if (cityInput) {
-      console.log(cityInput);
-      axios
-        .get(
-          "http://api.openweathermap.org/data/2.5/weather?q=" +
-            cityInput +
-            "&APPID=60dfad51347e098c9a6b000ced44c353"
-        )
-        .then((response) => {
-          console.log(response.data);
-          dispatch({
-            type: "SET_CITYDATA",
-            payload: response.data,
-          });
-          dispatch({
-            type: "SET_CITY",
-            payload: cityInput,
-          });
+      dispatch(fetchData(cityInput));
 
-          dispatch({
-            type: "SET_DATE",
-            payload:
-              week[new Date().getDay()] +
-              ", " +
-              new Date().getDate() +
-              " " +
-              months[new Date().getMonth() - 1] +
-              " " +
-              new Date().getFullYear(),
-          });
-
-          dispatch({
-            type: "SET_TIME",
-            payload: new Date().getHours() + ":" + new Date().getMinutes(),
-          });
-        })
-        .catch((error) => {
-          dispatch({
-            type: "SET_ERROR",
-            payload: error,
-          });
-          console.log(error);
-          alert("Opps\n", error.message);
-        });
+      dispatch({
+        type: "SET_DATE_TIME",
+        payload: {
+          date:
+            week[new Date().getDay()] +
+            ", " +
+            new Date().getDate() +
+            " " +
+            months[new Date().getMonth() - 1] +
+            " " +
+            new Date().getFullYear(),
+          time: new Date().getHours() + ":" + new Date().getMinutes(),
+        },
+      });
     }
   };
 
@@ -93,7 +69,25 @@ function Main() {
           onChange={(e) => setCityInput(e.target.value)}
         />
       </Form>
-      {city ? <City /> : <h2 className="title-tag">Search for your City</h2>}
+
+      {showError ? (
+        <Alert
+          className="error_msg"
+          variant="dark"
+          // variant="danger"
+          onClose={() => dispatch(errorShow())}
+          dismissible
+        >
+          <Alert.Heading>Opps!</Alert.Heading>
+          <p>{error.message}</p>
+        </Alert>
+      ) : null}
+
+      {cityData ? (
+        <City />
+      ) : (
+        <h2 className="title-tag">Search for your City</h2>
+      )}
     </main>
   );
 }

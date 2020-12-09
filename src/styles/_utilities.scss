@@ -3,15 +3,21 @@
     padding: 0 30px;
     margin: 0 auto;
     overflow: auto;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
-    font-size: $m-6;
+    font-size: 3rem;
     text-align: center;
 }
 
 h2 {
-    font-size: $m-4;
+    font-size: 2rem;
     text-align: center;
 }
 
@@ -22,4 +28,8 @@ a {
         text-decoration: none;
         color: $secondary-color;
     }
+}
+
+hr {
+    margin: 10px 0;
 }

@@ -1,5 +1,5 @@
-// @import "../../node_modules/bootstrap/scss/bootstrap";
-@import "config";
+$primary-color: #333;
+$secondary-color: #f4f4f4;
 
 body {
     * {
@@ -16,12 +16,9 @@ body {
     line-height: 1.35;
 }
 
-hr {
-    margin: 10px 0;
-}
-@import "header";
-@import "main";
-@import "city";
-@import "cityDetail";
+@import "Header";
+@import "Main";
+@import "City";
+@import "CityDetail";
 
 @import "utilities";

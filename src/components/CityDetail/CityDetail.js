@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { useStateValue } from "../../context/StateProvider";
-const CityDetail = (props) => {
-  const [{ cityData, date, time }] = useStateValue();
+import { useSelector } from "react-redux";
+
+const CityDetail = () => {
+  const cityData = useSelector((state) => state.cityData);
+  const date = useSelector((state) => state.date);
+  const time = useSelector((state) => state.time);
+
   const [tempTypes] = useState(["°C", "K", "°F"]);
   const [selectedTempType, setSelectedTempType] = useState("°C");
   if (!cityData) {
@@ -37,14 +41,8 @@ const CityDetail = (props) => {
     setSelectedTempType(event.target.innerHTML);
   };
 
-  let classNames = ["CityDetail"];
   let sunrise = null;
   let sunset = null;
-  if (new Date().getHours() > 19 || new Date().getHours() < 7) {
-    classNames.push("Dark");
-  } else {
-    classNames.push("Sunny");
-  }
 
   let temperatures =
     Object.keys(cityData).length > 0 && getTemperatures(cityData);
@@ -85,14 +83,21 @@ const CityDetail = (props) => {
 
   return (
     <div className="CityDetailContainer">
-      <div className={classNames.join(" ")}>
+      <div className="CityDetail">
         <div className="CityHeader">
-          <p className="CityName">
-            {cityData.name}, {cityData.sys.country}
-          </p>
+          <div className="City_Head">
+            <p className="CityName">
+              {cityData.name}, {cityData.sys.country}
+            </p>
+            <img
+              className="Icon"
+              src={`https://openweathermap.org/img/wn/${cityData.weather[0].icon}@2x.png`}
+              alt="Icon"
+            />
+          </div>
           <p className="Date_Time">
-            <span className="Date">{date}</span>
-            <span className="Time">{time}</span>
+            <span>{date}</span>
+            <span>{time}</span>
           </p>
         </div>
         {Object.keys(cityData).length > 0 && (
@@ -102,11 +107,16 @@ const CityDetail = (props) => {
                 {parseInt(temperatures.temp)} {selectedTempType}
               </p>
               <div className="WeatherDescription">
-                <span className="Description">{cityData.weather[0].main}</span>
-                <span>
-                  {parseInt(temperatures.temp_max)} {selectedTempType} /{" "}
-                  {parseInt(temperatures.temp_min)} {selectedTempType}
-                </span>
+                <p className="WeatherCondition">{cityData.weather[0].main}</p>
+
+                <p className="Description">
+                  <span>{cityData.weather[0].description}</span>
+                  <br />
+                  <span>
+                    {parseInt(temperatures.temp_max)} {selectedTempType} /{" "}
+                    {parseInt(temperatures.temp_min)} {selectedTempType}
+                  </span>
+                </p>
               </div>
             </div>
             <div className="TempCategories">
