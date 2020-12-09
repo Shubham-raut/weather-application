@@ -37,7 +37,7 @@ export const fetchData = (cityInput) => {
     dispatch(fetchRequest());
     axios
       .get(
-        "http://api.openweathermap.org/data/2.5/weather?q=" +
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
           cityInput +
           "&APPID=60dfad51347e098c9a6b000ced44c353"
       )
