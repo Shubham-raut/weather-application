@@ -97,7 +97,7 @@ export const fetchMyCities = (myCities) => {
       promises = [];
     for (let city of myCities) {
       let url =
-        "http://api.openweathermap.org/data/2.5/weather?q=" +
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
         city +
         "&APPID=60dfad51347e098c9a6b000ced44c353";
       promises.push(axios.get(url));
