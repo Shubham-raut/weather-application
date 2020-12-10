@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { citiesErrorShow, fetchMyCities } from "../../redux/actions";
 import { Alert, Spinner } from "react-bootstrap";
 import City from "../../components/City/City";
+import { getDateTime } from "../../utils/dateTime";
 
 const MyCities = () => {
   const myCities = useSelector((state) => state.myCities);
@@ -14,7 +15,14 @@ const MyCities = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchMyCities(myCities));
+    if (myCities.length) {
+      dispatch(fetchMyCities(myCities));
+
+      dispatch({
+        type: "SET_DATE_TIME",
+        payload: getDateTime(),
+      });
+    }
   }, [myCities]);
 
   return (

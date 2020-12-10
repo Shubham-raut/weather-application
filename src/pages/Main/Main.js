@@ -3,6 +3,7 @@ import { Form, Alert, Spinner, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { errorShow, fetchData } from "../../redux/actions";
 import City from "../../components/City/City";
+import { getDateTime } from "../../utils/dateTime";
 
 function Main() {
   const cityData = useSelector((state) => state.cityData);
@@ -12,30 +13,6 @@ function Main() {
   const dispatch = useDispatch();
 
   const [cityInput, setCityInput] = useState("");
-  const [week] = useState([
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Satuday",
-  ]);
-
-  const [months] = useState([
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ]);
 
   const citySearchHandlor = (event) => {
     event.preventDefault();
@@ -44,17 +21,7 @@ function Main() {
 
       dispatch({
         type: "SET_DATE_TIME",
-        payload: {
-          date:
-            week[new Date().getDay()] +
-            ", " +
-            new Date().getDate() +
-            " " +
-            months[new Date().getMonth() - 1] +
-            " " +
-            new Date().getFullYear(),
-          time: new Date().getHours() + ":" + new Date().getMinutes(),
-        },
+        payload: getDateTime(),
       });
     }
   };
