@@ -21,6 +21,7 @@ header {
         .NavItemContainer {
             display: flex;
             align-items: center;
+            min-width: 145px;
 
             a {
                 &:hover {

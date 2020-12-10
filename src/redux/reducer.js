@@ -4,6 +4,12 @@ import {
   SET_FETCH_SUCCESS,
   SET_DATE_TIME,
   SET_SHOWERROR,
+  ADDTO_MYCITIES,
+  REMOVEFROM_MYCITIES,
+  SET_CITIESFETCHING,
+  SET_CITIESFETCH_SUCCESS,
+  SET_CITIESFETCH_ERROR,
+  SET_CITIESSHOWERROR,
 } from "./CONSTANTS";
 
 export const initialState = {
@@ -13,6 +19,11 @@ export const initialState = {
   date: null,
   time: null,
   showError: false,
+  isCitiesFetching: false,
+  myCities: localStorage.getItem("myCities")?.split(",") || [],
+  citiesData: null,
+  cityFetchError: null,
+  showCityFetchError: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -53,6 +64,54 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         showError: false,
+      };
+
+    case ADDTO_MYCITIES:
+      localStorage.setItem(
+        "myCities",
+        [...state.myCities, action.payload].join(",")
+      );
+      return {
+        ...state,
+        myCities: [...state.myCities, action.payload],
+      };
+
+    case REMOVEFROM_MYCITIES:
+      state.myCities.splice(state.myCities.indexOf(action.payload), 1);
+      localStorage.setItem("myCities", [...state.myCities].join(","));
+      return {
+        ...state,
+        myCities: [...state.myCities],
+      };
+
+    case SET_CITIESFETCHING:
+      return {
+        ...state,
+        isCitiesFetching: true,
+        cityFetchError: null,
+        showCityFetchError: false,
+      };
+
+    case SET_CITIESFETCH_SUCCESS:
+      return {
+        ...state,
+        citiesData: action.payload,
+        isCitiesFetching: false,
+        cityFetchError: null,
+      };
+
+    case SET_CITIESFETCH_ERROR:
+      return {
+        ...state,
+        cityFetchError: action.payload,
+        isCitiesFetching: false,
+        showCityFetchError: true,
+      };
+
+    case SET_CITIESSHOWERROR:
+      return {
+        ...state,
+        showCityFetchError: false,
       };
 
     default:

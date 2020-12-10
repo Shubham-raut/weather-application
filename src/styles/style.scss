@@ -15,10 +15,9 @@ body {
     width: 100%;
     line-height: 1.35;
 }
-
+@import "utilities";
 @import "Header";
 @import "Main";
 @import "City";
 @import "CityDetail";
-
-@import "utilities";
+@import "myCities";

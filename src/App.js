@@ -5,6 +5,7 @@ import "./styles/style.css";
 import Main from "./pages/Main/Main";
 import Header from "./components/Header/Header";
 import CityDetail from "./components/CityDetail/CityDetail";
+import MyCities from "./pages/MyCities/MyCities";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <Header />
       <Switch>
         <Route path="/city/:city" component={CityDetail} />
-        <Route path="/" component={() => <Main />} />
+        <Route exact path="/" component={() => <Main />} />
+        <Route path="/mycities" component={() => <MyCities />} />
+        <Route path="*" component={() => <Main />} />
       </Switch>
     </BrowserRouter>
   );

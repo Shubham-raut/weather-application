@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import City from "../../components/City/City";
 import { Form, Alert, Spinner, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { errorShow, fetchData } from "../../redux/actions";
+import City from "../../components/City/City";
 
 function Main() {
   const cityData = useSelector((state) => state.cityData);
@@ -89,7 +89,11 @@ function Main() {
       ) : null}
 
       {isFetching ? <Spinner className="spinner" animation="grow" /> : null}
-      {cityData ? <City /> : null}
+      {cityData ? (
+        <div className="CityContainer">
+          <City cityData={cityData} />
+        </div>
+      ) : null}
     </main>
   );
 }

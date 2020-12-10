@@ -1,0 +1,30 @@
+.MyCityContainer {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 30px;
+}
+
+.myCities {
+    text-align: center;
+    font-weight: 700;
+    color: #0d1136;
+    font-size: 30px;
+    margin-bottom: 1.5rem;
+}
+
+.citiesContainer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.empty {
+    text-align: center;
+    font-weight: 700;
+    color: rgb(119, 121, 140);
+    margin: 40px 15px;
+}
