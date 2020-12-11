@@ -30,7 +30,7 @@ export const getDateTime = () => {
       ", " +
       new Date().getDate() +
       " " +
-      months[new Date().getMonth() - 1] +
+      months[new Date().getMonth()] +
       " " +
       new Date().getFullYear(),
     time: new Date().getHours() + ":" + new Date().getMinutes(),
