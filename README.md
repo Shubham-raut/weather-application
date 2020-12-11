@@ -17,6 +17,7 @@ Project is created with:
 
 - ReactJS
 - Redux
+- Router
 - OpenWeather Api
 - Bootstrap
 - SCSS
