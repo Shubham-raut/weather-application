@@ -1,3 +1,5 @@
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import {
   SET_FETCHING,
   SET_FETCH_ERROR,
@@ -12,7 +14,7 @@ import {
   SET_CITIESSHOWERROR,
 } from "./CONSTANTS";
 
-export const initialState = {
+const initialState = {
   isFetching: false,
   cityData: null,
   error: null,
@@ -20,11 +22,17 @@ export const initialState = {
   time: null,
   showError: false,
   isCitiesFetching: false,
-  myCities: localStorage.getItem("myCities")?.split(",") || [],
+  myCities: [],
   citiesData: null,
   cityFetchError: null,
   showCityFetchError: false,
 };
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['myCities']
+}
 
 const reducer = (state = initialState, action) => {
   // console.log(action);
@@ -67,10 +75,6 @@ const reducer = (state = initialState, action) => {
       };
 
     case ADDTO_MYCITIES:
-      localStorage.setItem(
-        "myCities",
-        [...state.myCities, action.payload].join(",")
-      );
       return {
         ...state,
         myCities: [...state.myCities, action.payload],
@@ -78,7 +82,6 @@ const reducer = (state = initialState, action) => {
 
     case REMOVEFROM_MYCITIES:
       state.myCities.splice(state.myCities.indexOf(action.payload), 1);
-      localStorage.setItem("myCities", [...state.myCities].join(","));
       return {
         ...state,
         myCities: [...state.myCities],
@@ -119,4 +122,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default persistReducer(persistConfig, reducer);
