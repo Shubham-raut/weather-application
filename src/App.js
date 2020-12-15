@@ -32,6 +32,7 @@ function App() {
     }
   }, []);
 
+  //refetch after 10 min
   useEffect(() => {
     clearInterval(reFetchCityRef.current);
     reFetchCityRef.current = setInterval(() => {
@@ -39,7 +40,7 @@ function App() {
         // console.log('city');
         dispatch(refetchData(cityData.name));
       }
-    }, 60000);
+    }, 600000);
   }, [cityData, isFetching]);
 
   useEffect(() => {
@@ -49,7 +50,7 @@ function App() {
         // console.log('myCities');
         dispatch(reFetchMyCities(myCities));
       }
-    }, 60000);
+    }, 600000);
   }, [myCities, isCitiesFetching]);
 
   return (
