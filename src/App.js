@@ -36,7 +36,7 @@ function App() {
     clearInterval(reFetchCityRef.current);
     reFetchCityRef.current = setInterval(() => {
       if (cityData?.name && !isFetching) {
-        console.log('city');
+        // console.log('city');
         dispatch(refetchData(cityData.name));
       }
     }, 60000);
@@ -46,7 +46,7 @@ function App() {
     clearInterval(refetchMyCitiesRef.current);
     refetchMyCitiesRef.current = setInterval(() => {
       if (myCities.length && !isCitiesFetching) {
-        console.log('myCities');
+        // console.log('myCities');
         dispatch(reFetchMyCities(myCities));
       }
     }, 60000);
