@@ -10,6 +10,7 @@ import {
   SET_CITIESFETCH_SUCCESS,
   SET_CITIESFETCH_ERROR,
   SET_CITIESSHOWERROR,
+  SET_DATE_TIME,
 } from "./CONSTANTS";
 
 const fetchRequest = () => {
@@ -64,8 +65,8 @@ export const fetchData = (cityInput) => {
     axios
       .get(
         "https://api.openweathermap.org/data/2.5/weather?q=" +
-          cityInput +
-          "&APPID=60dfad51347e098c9a6b000ced44c353"
+        cityInput +
+        "&APPID=e6c7e5812e674faf9192dfaddeb4438a"
       )
       .then((response) => {
         dispatch(fetchSuccess(response.data));
@@ -99,7 +100,7 @@ export const fetchMyCities = (myCities) => {
       let url =
         "https://api.openweathermap.org/data/2.5/weather?q=" +
         city +
-        "&APPID=60dfad51347e098c9a6b000ced44c353";
+        "&APPID=e6c7e5812e674faf9192dfaddeb4438a";
       promises.push(axios.get(url));
     }
     axios
@@ -121,3 +122,10 @@ export const citiesErrorShow = () => {
     type: SET_CITIESSHOWERROR,
   };
 };
+
+export const setDateTime = (input) => {
+  return {
+    type: SET_DATE_TIME,
+    payload: input,
+  }
+}

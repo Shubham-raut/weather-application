@@ -31,7 +31,7 @@ const initialState = {
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['myCities']
+  whitelist: ['cityData', 'myCities']
 }
 
 const reducer = (state = initialState, action) => {
