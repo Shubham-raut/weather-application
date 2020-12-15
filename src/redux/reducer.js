@@ -12,6 +12,10 @@ import {
   SET_CITIESFETCH_SUCCESS,
   SET_CITIESFETCH_ERROR,
   SET_CITIESSHOWERROR,
+  SET_REFETCH_ERROR,
+  SET_RECITIESFETCH_ERROR,
+  SET_RECITIESFETCHING,
+  SET_REFETCHING
 } from "./CONSTANTS";
 
 const initialState = {
@@ -45,6 +49,12 @@ const reducer = (state = initialState, action) => {
         showError: false,
       };
 
+    case SET_REFETCHING:
+      return {
+        ...state,
+        isFetching: true,
+      };
+
     case SET_FETCH_SUCCESS:
       return {
         ...state,
@@ -59,6 +69,13 @@ const reducer = (state = initialState, action) => {
         error: action.payload,
         isFetching: false,
         showError: true,
+      };
+
+    case SET_REFETCH_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+        isFetching: false,
       };
 
     case SET_DATE_TIME:
@@ -95,6 +112,12 @@ const reducer = (state = initialState, action) => {
         showCityFetchError: false,
       };
 
+    case SET_RECITIESFETCHING:
+      return {
+        ...state,
+        isCitiesFetching: true,
+      };
+
     case SET_CITIESFETCH_SUCCESS:
       return {
         ...state,
@@ -109,6 +132,13 @@ const reducer = (state = initialState, action) => {
         cityFetchError: action.payload,
         isCitiesFetching: false,
         showCityFetchError: true,
+      };
+
+    case SET_RECITIESFETCH_ERROR:
+      return {
+        ...state,
+        cityFetchError: action.payload,
+        isCitiesFetching: false,
       };
 
     case SET_CITIESSHOWERROR:

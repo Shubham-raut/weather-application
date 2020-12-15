@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Form, Alert, Spinner, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { errorShow, fetchData, setDateTime } from "../../redux/actions";
+import { errorShow, fetchData } from "../../redux/actions";
 import City from "../../components/City/City";
-import { getDateTime } from "../../utils/dateTime";
 
 function Main() {
   const cityData = useSelector((state) => state.cityData);
@@ -18,7 +17,7 @@ function Main() {
     event.preventDefault();
     if (cityInput) {
       dispatch(fetchData(cityInput));
-      dispatch(setDateTime(getDateTime()));
+      // dispatch(setDateTime(getDateTime()));
     }
   };
 
@@ -36,7 +35,7 @@ function Main() {
         </Button>
       </Form>
 
-      {showError ? (
+      {showError && error ? (
         <Alert
           className="error_msg"
           variant="dark"

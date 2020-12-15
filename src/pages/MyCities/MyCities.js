@@ -16,7 +16,7 @@ const MyCities = () => {
     <div className="MyCityContainer">
       <div className="myCities">My Cities</div>
 
-      {showCityFetchError ? (
+      {showCityFetchError && cityFetchError ? (
         <Alert
           className="error_msg"
           variant="dark"
